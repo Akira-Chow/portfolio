@@ -5,6 +5,7 @@ module.exports = {
     descriptionShort: "I build mobile apps",
     descriptionLong:
       "I'm a software engineer specializing in building and maintaining, beautiful and responsive, mobile apps.",
+    headshotUrl: "https://res.cloudinary.com/dgw2mexe/image/upload/v1650125153/me_tb1v6p.webp"
   },
 
   metadata: {

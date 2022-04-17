@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { about } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
+import { personalInfo } from '@config';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -150,7 +151,7 @@ const About = () => {
           <div className="wrapper">
             <Image
               className="img"
-              src="https://res.cloudinary.com/dgw2mexe/image/upload/v1650125153/me_tb1v6p.webp"
+              src={personalInfo.headshotUrl}
               quality="95"
               width="75%" 
               height="75%" 
