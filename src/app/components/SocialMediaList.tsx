@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { SocialMediaListItem } from "../types";
 
 type SocialMediaListProps = {
@@ -11,7 +12,7 @@ export function SocialMediaListItem({
 }: SocialMediaListItem) {
   return (
     <li className="mr-5 shrink-0 text-xs">
-      <a
+      <Link
         className="block hover:text-slate-200"
         href={url}
         target="_blank"
@@ -21,7 +22,7 @@ export function SocialMediaListItem({
       >
         {svgElement}
         <span className="sr-only">{title}</span>
-      </a>
+      </Link>
     </li>
   );
 }

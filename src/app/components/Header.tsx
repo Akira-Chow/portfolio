@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   ArrowTopRightIcon,
   GitHubLogoIcon,
@@ -8,71 +9,54 @@ import {
 } from "@radix-ui/react-icons";
 import { SocialMediaList } from "./SocialMediaList";
 import { SocialMediaListItem } from "../types";
-import Link from "next/link";
 
 const socialMediaData: SocialMediaListItem[] = [
   {
     title: "Github",
-    url: "https://github.com/Akira-Chow",
+    url: "",
     svgElement: <GitHubLogoIcon className="h-6 w-6" />,
   },
   {
     title: "LinkedIn",
-    url: "https://linkedin.com/in/akirachow",
+    url: "",
     svgElement: <LinkedInLogoIcon className="h-6 w-6" />,
   },
 ];
-const sections = ["about", "experience"];
 
 export function Header() {
-  const [activeSection, setActiveSection] = useState<string>(sections[0]);
-  const activeSectionRef = useRef<string>(activeSection);
+  const [handlersLoaded, setHandlersLoaded] = useState(false);
+
+  const loadScrollHandler = async () => {
+    if (!handlersLoaded) {
+      const { initScrollHandler } = await import("./scrollHandler");
+      initScrollHandler();
+      setHandlersLoaded(true);
+    }
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      let currentSection = activeSectionRef.current;
-
-      sections.forEach((section) => {
-        const sectionElement = document.getElementById(section);
-        if (sectionElement) {
-          const rect = sectionElement.getBoundingClientRect();
-          if (
-            rect.top <= window.innerHeight / 2 &&
-            rect.bottom >= window.innerHeight / 2
-          ) {
-            currentSection = section;
-          }
-        }
-      });
-
-      if (currentSection !== activeSectionRef.current) {
-        activeSectionRef.current = currentSection;
-        setActiveSection(currentSection);
-      }
+    const handleScrollEvent = () => {
+      loadScrollHandler();
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollEvent);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollEvent);
     };
-  }, []);
+  }, [handlersLoaded]);
 
-  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const targetSection = event.currentTarget
-      .getAttribute("href")
-      ?.substring(1);
-
-    if (targetSection) {
-      activeSectionRef.current = targetSection;
-
-      const sectionElement = document.getElementById(targetSection);
-      if (sectionElement) {
-        sectionElement.scrollIntoView({
-          block: "start",
-        });
-      }
+  const handleNavClick = async (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const target = event.currentTarget.getAttribute("href")?.substring(1);
+    const sectionElement = document.getElementById(target || "");
+    if (sectionElement) {
+      sectionElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
+    await loadScrollHandler();
   };
 
   return (
@@ -108,11 +92,9 @@ export function Header() {
           <ul className="mt-16 w-max">
             <li>
               <Link
-                onClick={handleNavClick}
-                className={`group flex items-center py-3 ${
-                  activeSection === "about" ? "active" : ""
-                }`}
                 href="#about"
+                className="group flex items-center py-3 active"
+                onClick={handleNavClick}
                 aria-label="Jump to About section"
               >
                 <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
@@ -123,11 +105,9 @@ export function Header() {
             </li>
             <li>
               <Link
-                onClick={handleNavClick}
-                className={`group flex items-center py-3 ${
-                  activeSection === "experience" ? "active" : ""
-                }`}
                 href="#experience"
+                className="group flex items-center py-3"
+                onClick={handleNavClick}
                 aria-label="Jump to Experience section"
               >
                 <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>

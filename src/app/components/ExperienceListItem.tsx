@@ -1,6 +1,7 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { TechnologyStackItem } from "./TechnologyStackItem";
 import type { ExperienceListItem } from "../types";
+import Link from "next/link";
 
 type ExperienceListItemProps = {
   data: ExperienceListItem;
@@ -29,7 +30,7 @@ export function ExperienceListItem({ data }: ExperienceListItemProps) {
         <div className="z-10 sm:col-span-6">
           <h3 className="font-medium leading-snug text-slate-200">
             <div>
-              <a
+              <Link
                 className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300  group/link text-base"
                 href={companyUrl}
                 target="_blank"
@@ -44,7 +45,7 @@ export function ExperienceListItem({ data }: ExperienceListItemProps) {
                     <ArrowTopRightIcon className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
                   </span>
                 </span>
-              </a>
+              </Link>
             </div>
             {jobTitles?.length > 1 ? (
               <div>
@@ -56,7 +57,11 @@ export function ExperienceListItem({ data }: ExperienceListItemProps) {
               </div>
             ) : null}
           </h3>
-          <p className="mt-2 text-sm leading-normal">{jobSummary}</p>
+          <ul className="fancy-list">
+            {jobSummary.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
             {technologies.map((i) => (
               <TechnologyStackItem key={i} text={i} />
