@@ -7,8 +7,11 @@ const experienceListItemData: ExperienceListItemType[] = [
     companyName: "CAE Inc.",
     companyUrl: "https://www.cae.com/",
     jobTenure: "Apr 2021 - Jul 2024",
-    jobSummary:
-      "Maintained and enhanced core functionalities for a B2C mobile application tailored for airline pilots and a B2B admin dashboard aimed at helping airlines manage ground crew operations at airports. Collaborated with an international team of developers, product owners, designers, and testers, while also providing mentoring to junior developers and interns.",
+    jobSummary: [
+      "Maintained and enhanced core functionalities of several cross-platform solutions",
+      "Reduced technical debt and churn",
+      "Provided guidance to other developers to ensure day-to-day operations run smoothly",
+    ],
     jobTitles: ["Senior Software Engineer", "Software Engineer"],
     technologies: [
       "Typescript",
@@ -25,8 +28,11 @@ const experienceListItemData: ExperienceListItemType[] = [
     companyName: "RB Group.aero",
     companyUrl: "https://rosterbuster.aero/",
     jobTenure: "Jul 2019 - Apr 2021",
-    jobSummary:
-      "Designed project architectures and contributed significantly to core functionalities for a B2C mobile application tailored for airline pilots and a B2B admin dashboard aimed at helping airlines manage ground crew operations at airports.",
+    jobSummary: [
+      "Designed and implemented project architectures",
+      "Made significant contributions to enhance user experience and application performance",
+      "Lead efforts in developing company-wide best practice documentation, standardizing checklists for developers and testers, and facilitating knowledge-sharing sessions",
+    ],
     jobTitles: ["Software Engineer"],
     technologies: ["Typescript", "React", "React Native"],
   },
@@ -34,8 +40,11 @@ const experienceListItemData: ExperienceListItemType[] = [
     companyName: "Inwijs",
     companyUrl: "https://www.lyceo.nl/",
     jobTenure: "Jun - Nov 2017",
-    jobSummary:
-      "Build and maintain hybrid mobile applications, modernize parts of an internal web portal, and ensure backend reliability by designing and implementing thorough test cases.",
+    jobSummary: [
+      "Build and maintain cross-platform solutions",
+      "Modernize the internal web portal",
+      "Ensure backend reliability by writing robust test cases",
+    ],
     jobTitles: ["Junior Software Developer"],
     technologies: ["Javascript", "PHP", "Angular", "Ionic", "Symfony"],
   },
@@ -43,8 +52,6 @@ const experienceListItemData: ExperienceListItemType[] = [
 
 const introductionParagraphs: string[] = [
   `I’m a frontend engineer passionate about building impactful mobile applications and frontend solutions. I focus on creating user-centered, maintainable applications that blend technology and design to deliver seamless experiences.`,
-  `Most recently, I worked as a Senior Software Engineer at CAE Inc., where I maintained and enhanced mobile apps for airline pilots and an admin dashboard that helps airlines manage ground crew operations. I collaborated daily with a talented international team and mentored junior developers and interns to foster growth and ensure the success of our products.`,
-  `Previously, I worked at RB Group.aero, where I designed project architectures and contributed to the development of mobile apps and operational solutions for airlines. At Inwijs, I helped build hybrid mobile applications and modernize internal web portals.`,
   `Outside of work, I enjoy reading manga, watching anime, going for long walks, and playing games with friends.`,
 ];
 

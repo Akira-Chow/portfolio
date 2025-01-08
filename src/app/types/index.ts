@@ -7,7 +7,7 @@ type SocialMediaListItem = {
 type ExperienceListItem = {
   companyName: string;
   companyUrl: string;
-  jobSummary: string;
+  jobSummary: string[];
   jobTenure: string;
   jobTitles: string[];
   technologies: string[];
