@@ -5,11 +5,7 @@ type SocialMediaListProps = {
   items: SocialMediaListItem[];
 };
 
-export function SocialMediaListItem({
-  title,
-  url,
-  svgElement,
-}: SocialMediaListItem) {
+export function SocialMediaListItem({ name, url, icon }: SocialMediaListItem) {
   return (
     <li className="mr-5 shrink-0 text-xs">
       <Link
@@ -17,11 +13,11 @@ export function SocialMediaListItem({
         href={url}
         target="_blank"
         rel="noreferrer noopener"
-        aria-label={`${title} (opens in a new tab)`}
-        title={title}
+        aria-label={`${name} (opens in a new tab)`}
+        title={name}
       >
-        {svgElement}
-        <span className="sr-only">{title}</span>
+        {icon}
+        <span className="sr-only">{name}</span>
       </Link>
     </li>
   );
@@ -31,7 +27,7 @@ export function SocialMediaList({ items }: SocialMediaListProps) {
   return (
     <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
       {items.map((i) => (
-        <SocialMediaListItem key={i.title} {...i} />
+        <SocialMediaListItem key={i.name} {...i} />
       ))}
     </ul>
   );
