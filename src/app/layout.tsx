@@ -5,6 +5,15 @@ export const metadata: Metadata = {
   title: "Akira Chow",
   description:
     "Akira Chow is a front end software engineer who builds intuitive, high-performance mobile and web experiences.",
+  openGraph: {
+    title: "Akira Chow",
+    description:
+      "Akira Chow is a front end software engineer who builds intuitive, high-performance mobile and web experiences.",
+    url: "https://akirachow.dev",
+    type: "website",
+    images: "https://akirachow.dev/og.png",
+    locale: "en_US",
+  },
   icons: [
     {
       rel: "icon",

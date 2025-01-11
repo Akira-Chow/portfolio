@@ -1,16 +1,20 @@
 type SocialMediaListItem = {
-  title: string;
+  name: string;
   url: string;
-  svgElement: React.ReactElement<React.SVGProps<SVGElement>>;
+  icon: React.ReactElement<React.SVGProps<SVGElement>>;
 };
 
 type ExperienceListItem = {
-  companyName: string;
-  companyUrl: string;
-  jobSummary: string[];
-  jobTenure: string;
-  jobTitles: string[];
-  technologies: string[];
+  job: {
+    titles: string[];
+    tenure: string;
+    summaryResponsibilities: string[];
+    technologies: string[];
+  };
+  company: {
+    name: string;
+    url: string;
+  };
 };
 
 export type { SocialMediaListItem, ExperienceListItem };

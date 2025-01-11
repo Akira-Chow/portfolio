@@ -1,80 +1,116 @@
+import Link from "next/link";
 import type { ExperienceListItem as ExperienceListItemType } from "../types";
 import { ContentSection } from "./ContentSection";
 import { ExperienceListItem } from "./ExperienceListItem";
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 
-const experienceListItemData: ExperienceListItemType[] = [
-  {
-    companyName: "CAE Inc.",
-    companyUrl: "https://www.cae.com/",
-    jobTenure: "Apr 2021 - Jul 2024",
-    jobSummary: [
-      "Maintained and enhanced core functionalities of several cross-platform solutions",
-      "Reduced technical debt and churn",
-      "Provided guidance to other developers to ensure day-to-day operations run smoothly",
-    ],
-    jobTitles: ["Senior Software Engineer", "Software Engineer"],
-    technologies: [
-      "Typescript",
-      "React",
-      "React Native",
-      "Angular",
-      "jQuery",
-      "Azure",
-      "Ionic",
-      "Cordova",
-    ],
-  },
-  {
-    companyName: "RB Group.aero",
-    companyUrl: "https://rosterbuster.aero/",
-    jobTenure: "Jul 2019 - Apr 2021",
-    jobSummary: [
-      "Designed and implemented project architectures",
-      "Made significant contributions to enhance user experience and application performance",
-      "Lead efforts in developing company-wide best practice documentation, standardizing checklists for developers and testers, and facilitating knowledge-sharing sessions",
-    ],
-    jobTitles: ["Software Engineer"],
-    technologies: ["Typescript", "React", "React Native"],
-  },
-  {
-    companyName: "Inwijs",
-    companyUrl: "https://www.lyceo.nl/",
-    jobTenure: "Jun - Nov 2017",
-    jobSummary: [
-      "Build and maintain cross-platform solutions",
-      "Modernize the internal web portal",
-      "Ensure backend reliability by writing robust test cases",
-    ],
-    jobTitles: ["Junior Software Developer"],
-    technologies: ["Javascript", "PHP", "Angular", "Ionic", "Symfony"],
-  },
-];
+const getSentenceParts = (sentence: string) => {
+  const indexOfLastSpace = sentence.lastIndexOf(" ");
+  const sentenceWithoutLastWord = sentence.slice(0, indexOfLastSpace);
+  const lastWord = sentence.slice(indexOfLastSpace + 1);
 
-const introductionParagraphs: string[] = [
-  `I’m a frontend engineer passionate about building impactful mobile applications and frontend solutions. I focus on creating user-centered, maintainable applications that blend technology and design to deliver seamless experiences.`,
-  `Outside of work, I enjoy reading manga, watching anime, going for long walks, and playing games with friends.`,
-];
+  return { sentenceWithoutLastWord, lastWord };
+};
 
-export function Content() {
+type ContentProps = {
+  data: {
+    about: { introductionParagraphs: string[]; skills: string[] };
+    experience: ExperienceListItemType[];
+    projects: {
+      title: string;
+      description: string;
+      url: string;
+      imagePath: string;
+    }[];
+  };
+};
+
+export function Content({ data }: ContentProps) {
+  const { about, experience, projects } = data;
   return (
     <main id="content" className="pt-24 lg:w-[52%] lg:py-24">
       <ContentSection id="about">
         <div>
-          {introductionParagraphs.map((item) => (
+          {about.introductionParagraphs.map((item) => (
             <p key={item} className="mb-4">
               {item}
             </p>
           ))}
+          {about.skills.length > 0 && (
+            <>
+              <p className="mb-4">
+                Here are a few technologies I’ve worked with:
+              </p>
+              <ul className="fancy-list">
+                {about.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       </ContentSection>
 
       <ContentSection id="experience">
         <div>
           <ol className="group/list">
-            {experienceListItemData.map((item) => (
-              <ExperienceListItem key={item.jobTenure} data={item} />
+            {experience.map((item) => (
+              <ExperienceListItem key={item.job.tenure} data={item} />
             ))}
           </ol>
+        </div>
+      </ContentSection>
+
+      <ContentSection id="projects">
+        <div>
+          <ul className="group/list">
+            {projects.map((project) => {
+              const { sentenceWithoutLastWord, lastWord } = getSentenceParts(
+                project.title
+              );
+
+              return (
+                <li key={project.title} className="mb-12">
+                  <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                    <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                    <div className="z-10 sm:order-2 sm:col-span-6">
+                      <h3>
+                        <Link
+                          className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base"
+                          href={project.url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`${project.title} (opens in a new tab)`}
+                        >
+                          <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                          <span>
+                            {sentenceWithoutLastWord}{" "}
+                            <span className="inline-block">
+                              {lastWord}
+                              <ArrowTopRightIcon className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
+                            </span>
+                          </span>
+                        </Link>
+                      </h3>
+                      <p className="mt-2 text-sm leading-normal">
+                        {project.description}
+                      </p>
+                    </div>
+                    <Image
+                      className="aspect-video object-cover rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                      alt={project.title}
+                      loading="lazy"
+                      width={200}
+                      height={48}
+                      decoding="async"
+                      src={project.imagePath}
+                    ></Image>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </ContentSection>
     </main>
