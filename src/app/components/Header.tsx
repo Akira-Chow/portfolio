@@ -84,7 +84,9 @@ export function Header({ data, nav }: HeaderProps) {
           </ul>
         </nav>
       </div>
-      <SocialMediaList items={socials} />
+      <div className="h-fit">
+        <SocialMediaList items={socials} />
+      </div>
     </header>
   );
 }
