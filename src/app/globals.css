@@ -41,9 +41,9 @@ ul {
     padding-left: theme("padding.2");
     li {
       list-style-position: outside;
+      list-style-type: "▹";
       &::marker {
         color: theme("colors.teal.300");
-        content: "▹";
       }
     }
   }
