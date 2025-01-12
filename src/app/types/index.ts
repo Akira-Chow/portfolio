@@ -1,7 +1,9 @@
+import { ReactElement, SVGProps } from "react";
+
 type SocialMediaListItem = {
   name: string;
   url: string;
-  icon: React.ReactElement<React.SVGProps<SVGElement>>;
+  icon: ReactElement<SVGProps<SVGElement>>;
 };
 
 type ExperienceListItem = {

@@ -1,4 +1,4 @@
-import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { GithubSVG, LinkedInSVG } from "@/app/components/icons";
 
 export const data = {
   header: {
@@ -9,12 +9,12 @@ export const data = {
       {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/akirachow",
-        icon: <LinkedInLogoIcon className="h-8 w-8" />,
+        icon: <LinkedInSVG />,
       },
       {
         name: "GitHub",
         url: "https://github.com/Akira-Chow",
-        icon: <GitHubLogoIcon className="h-8 w-8" />,
+        icon: <GithubSVG />,
       },
     ],
     resume: "/resume.pdf",

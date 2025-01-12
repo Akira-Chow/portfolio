@@ -2,9 +2,9 @@
 
 import React, { useCallback } from "react";
 import Link from "next/link";
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { SocialMediaList } from "./SocialMediaList";
 import { SocialMediaListItem } from "../types";
+import { ArrowTopRightIcon } from "./icons";
 
 type HeaderProps = {
   data: {
