@@ -2,9 +2,9 @@
 
 import React, { useCallback } from "react";
 import Link from "next/link";
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { SocialMediaList } from "./SocialMediaList";
 import { SocialMediaListItem } from "../types";
+import { ArrowTopRightIcon } from "./icons";
 
 type HeaderProps = {
   data: {
@@ -84,9 +84,7 @@ export function Header({ data, nav }: HeaderProps) {
           </ul>
         </nav>
       </div>
-      <div className="h-fit">
-        <SocialMediaList items={socials} />
-      </div>
+      <SocialMediaList items={socials} />
     </header>
   );
 }

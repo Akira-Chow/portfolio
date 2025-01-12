@@ -1,7 +1,7 @@
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { TechnologyStackItem } from "./TechnologyStackItem";
 import type { ExperienceListItem } from "../types";
 import Link from "next/link";
+import { ArrowTopRightIcon } from "./icons";
 
 type ExperienceListItemProps = {
   data: ExperienceListItem;
@@ -50,7 +50,7 @@ export function ExperienceListItem({ data }: ExperienceListItemProps) {
               </div>
             ) : null}
           </h3>
-          <ul className="fancy-list">
+          <ul className="fancy-list" aria-label="Summary of responsibilities">
             {job.summaryResponsibilities.map((item) => (
               <li key={item}>{item}</li>
             ))}

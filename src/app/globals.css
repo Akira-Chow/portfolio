@@ -38,14 +38,12 @@ ul {
     list-style: none;
     line-height: theme("lineHeight.6");
     font-size: theme("fontSize.sm");
+    padding-left: theme("padding.2");
     li {
-      position: relative;
-      padding-left: theme("padding.4");
-      &:before {
-        content: "▹";
-        position: absolute;
-        left: 0;
+      list-style-position: outside;
+      &::marker {
         color: theme("colors.teal.300");
+        content: "▹";
       }
     }
   }

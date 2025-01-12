@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { ExperienceListItem as ExperienceListItemType } from "../types";
 import { ContentSection } from "./ContentSection";
 import { ExperienceListItem } from "./ExperienceListItem";
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import { ArrowTopRightIcon } from "./icons";
 
 const getSentenceParts = (sentence: string) => {
   const indexOfLastSpace = sentence.lastIndexOf(" ");
@@ -42,7 +42,10 @@ export function Content({ data }: ContentProps) {
               <p className="mb-4">
                 Here are a few technologies I’ve worked with:
               </p>
-              <ul className="fancy-list">
+              <ul
+                className="fancy-list"
+                aria-label="Technologies I've worked with"
+              >
                 {about.skills.map((skill) => (
                   <li key={skill}>{skill}</li>
                 ))}

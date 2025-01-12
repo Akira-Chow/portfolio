@@ -16,8 +16,8 @@ export function SocialMediaListItem({ name, url, icon }: SocialMediaListItem) {
         aria-label={`${name} (opens in a new tab)`}
         title={name}
       >
-        {icon}
         <span className="sr-only">{name}</span>
+        {icon}
       </Link>
     </li>
   );
