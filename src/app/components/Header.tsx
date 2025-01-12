@@ -54,6 +54,7 @@ export function Header({ data, nav }: HeaderProps) {
             target="_blank"
             rel="noreferrer noopener"
             aria-label="View CV/Résumé (opens in a new tab)"
+            prefetch={false}
           >
             <span>
               View Full{" "}
