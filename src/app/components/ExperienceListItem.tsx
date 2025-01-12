@@ -43,7 +43,11 @@ export function ExperienceListItem({ data }: ExperienceListItemProps) {
             {job.titles?.length > 1 ? (
               <div>
                 {job.titles.slice(1).map((i) => (
-                  <div key={i} className="text-slate-500" aria-hidden="true">
+                  <div
+                    key={i}
+                    className="text-slate-500 text-sm"
+                    aria-hidden="true"
+                  >
                     {i}
                   </div>
                 ))}
