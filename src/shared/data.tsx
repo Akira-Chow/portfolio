@@ -9,12 +9,12 @@ export const data = {
       {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/akirachow",
-        icon: <LinkedInLogoIcon className="h-6 w-6" />,
+        icon: <LinkedInLogoIcon className="h-8 w-8" />,
       },
       {
         name: "GitHub",
         url: "https://github.com/Akira-Chow",
-        icon: <GitHubLogoIcon className="h-6 w-6" />,
+        icon: <GitHubLogoIcon className="h-8 w-8" />,
       },
     ],
     resume: "/resume.pdf",
