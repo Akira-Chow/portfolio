@@ -29,7 +29,7 @@ type ContentProps = {
 export function Content({ data }: ContentProps) {
   const { about, experience, projects } = data;
   return (
-    <main id="content" className="pt-24 lg:w-[52%] lg:py-24">
+    <main id="content" className="pt-24 lg:w-[52%] lg:py-24 text-lg">
       <ContentSection id="about">
         <div>
           {about.introductionParagraphs.map((item) => (
